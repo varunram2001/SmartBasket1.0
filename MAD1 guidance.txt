@@ -1,0 +1,39 @@
+python -m venv env
+
+env\Scripts\activate.bat    for Windows
+
+from flask import Flask
+from applications.database import db
+
+def create_app():
+   app=Flast(__name__)
+   app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///db.sqlite3"
+   db.init_app(app)
+   app.app_context().push()
+   
+   return app
+
+app=create_app()
+
+from applications.controllers import *
+
+if __name__=="__main__"
+   db.create_all()
+   app.run(host="0.0.0.0",port=2345, debug=True)
+
+
+
+
+
+controllers.py
+
+from flask import render_template
+from flask import current_app as app
+from main import app
+
+
+@app.route("/")
+def home():
+   return render_template("home.html")
+
+from sql
